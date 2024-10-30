@@ -1,0 +1,448 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+.colunasecao {
+}
+.colunahora {
+}
+.colunacand {
+}
+.colunager {
+}
+.colunadiv {
+}
+.fontsize10 {
+  font-size: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.fontsize11 {
+  font-size: 11px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.fontsize12 {
+  font-size: 12px;
+  line-height: 1;
+}
+.fontsize14 {
+  font-size: 14px;
+  line-height: 1;
+}
+.fa-spin {
+  animation: fa-spin 2s infinite linear;
+}
+.fontsize8 {
+  font-size: 8px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+.height40 {
+  height: 40px;
+}
+.width40 {
+  width: 40px;
+}
+.width60 {
+  width: 60px;
+}
+.width100 {
+  width: 100px;
+}
+.width120 {
+  width: 120px;
+}
+.width130 {
+  width: 130px;
+}
+.width150 {
+  width: 150px;
+}
+.width200 {
+  width: 200px;
+}
+.width300 {
+  width: 300px;
+}
+.width340 {
+  width: 340px;
+}
+.width20 {
+  width: 20px;
+}
+.ddMenu {
+  width: 10px;
+}
+p {
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
+  background: #ffffff;
+  padding: 2px;
+}
+.container h1 {
+  color: #19334d;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: #a9a9a9;
+  border: 1px solid #a9a9a9;
+  border-radius: 3px;
+  color: black;
+  font-size: 8px;
+}
+
+.progress {
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  transition: width 0.5s;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.progress:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+}
+
+.popover {
+  position: absolute;
+  color: #000;
+  font-size: 11px;
+  box-shadow: 2px 2px rgba(197, 197, 197, 0.5);
+  display: inline-block;
+  border: solid 1px #b3b3b3;
+  background: #e6e6e6;
+  padding: 3px;
+  border-radius: 5px;
+  top: 20px;
+  left: calc(50% -28px);
+}
+.popover::before {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  content: '';
+  border-color: transparent;
+  border-style: solid;
+  border-width: 11px;
+  border-top-width: 0;
+  border-bottom-color: #b3b3b3;
+  top: -11px;
+  left: 11px;
+}
+.popover::after {
+  position: absolute;
+  display: block;
+  box-sizing: content-box;
+  content: '';
+  border-color: transparent;
+  border-style: solid;
+  border-width: 10px;
+  border-top-width: 0;
+  border-bottom-color: #e6e6e6;
+  top: -10px;
+  left: 12px;
+}
+.popover .color {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 3px;
+  border: 1px solid white;
+}
+
+.progress {
+  border-radius: 3px;
+  overflow: visible;
+}
+.progress-bar {
+  -webkit-transition: width 1.5s ease-in-out;
+  transition: width 1.5s ease-in-out;
+}
+
+@-webkit-keyframes animate-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-moz-keyframes animate-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@keyframes animate-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-webkit-keyframes animate-height {
+  0% {
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-moz-keyframes animate-height {
+  0% {
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@keyframes animate-height {
+  0% {
+    height: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+#bar-chart {
+  height: 230px;
+  width: 100%;
+  position: relative;
+  margin: 1px auto 0;
+}
+#bar-chart * {
+  box-sizing: border-box;
+}
+#bar-chart .graph {
+  height: 129px;
+  position: relative;
+}
+#bar-chart .bars {
+  height: 75px;
+  padding: 0 7%;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+#bar-chart .bar-group {
+  display: block;
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 42%;
+  margin-right: 10%;
+  margin-left: 0%;
+}
+#bar-chart .bar-group:last-child {
+  margin-right: 0;
+}
+#bar-chart .bar-group .bar {
+  visibility: hidden;
+  height: 0;
+  -webkit-animation: animate-height;
+  -moz-animation: animate-height;
+  animation: animate-height;
+  animation-timing-function: cubic-bezier(0.35, 0.95, 0.67, 0.99);
+  -webkit-animation-timing-function: cubic-bezier(0.35, 0.95, 0.67, 0.99);
+  -moz-animation-timing-function: cubic-bezier(0.35, 0.95, 0.67, 0.99);
+  animation-duration: 0.4s;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.15);
+  border: 1px solid #2d2d2d;
+  border-radius: 3px 3px 0 0;
+  bottom: 0;
+  cursor: pointer;
+  height: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+#bar-chart .bar-group .bar:nth-child(2) {
+  left: 35%;
+}
+#bar-chart .bar-group .bar:nth-child(3) {
+  left: 70%;
+}
+#bar-chart .bar-group .bar span {
+  display: none;
+}
+#bar-chart .bar-group .bar-1 {
+  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+}
+#bar-chart .bar-group .bar-2 {
+  animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+}
+#bar-chart .bar-group .bar-3 {
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+}
+#bar-chart .bar-group .bar-4 {
+  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+}
+#bar-chart .bar-group .bar-5 {
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+}
+#bar-chart .bar-group .bar-6 {
+  animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
+}
+#bar-chart .bar-group .bar-7 {
+  animation-delay: 0.9s;
+  -webkit-animation-delay: 0.9s;
+}
+#bar-chart .bar-group .bar-8 {
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+}
+#bar-chart .bar-group .bar-9 {
+  animation-delay: 1.1s;
+  -webkit-animation-delay: 1.1s;
+}
+#bar-chart .bar-group .bar-10 {
+  animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+}
+#bar-chart .bar-group .bar-11 {
+  animation-delay: 1.3s;
+  -webkit-animation-delay: 1.3s;
+}
+#bar-chart .bar-group .bar-12 {
+  animation-delay: 1.4s;
+  -webkit-animation-delay: 1.4s;
+}
+#bar-chart .bar-group .bar-13 {
+  animation-delay: 1.5s;
+  -webkit-animation-delay: 1.5s;
+}
+#bar-chart .bar-group .bar-14 {
+  animation-delay: 1.6s;
+  -webkit-animation-delay: 1.6s;
+}
+#bar-chart .bar-group .bar-15 {
+  animation-delay: 1.7s;
+  -webkit-animation-delay: 1.7s;
+}
+#bar-chart ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#bar-chart .x-axis {
+  bottom: 0;
+  margin-left: 5%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+#bar-chart .x-axis li {
+  float: left;
+  margin-right: 8.5%;
+  font-size: 11px;
+  width: 37%;
+}
+#bar-chart .x-axis li:last-child {
+  margin-right: 0;
+}
+#bar-chart .y-axis {
+  position: absolute;
+  text-align: right;
+  width: 100%;
+}
+#bar-chart .y-axis li {
+  border-top: 1px dotted #4e5464;
+  display: block;
+  height: 22px;
+  width: 100%;
+}
+#bar-chart .y-axis li span {
+  display: block;
+  font-size: 11px;
+  margin: -10px 0 0 -60px;
+  padding: 0 0px;
+  width: 50px;
+}
+#bar-chart .stat-1 {
+  background-image: -webkit-linear-gradient(
+    left,
+    #ff4500 0%,
+    #ff4500 47%,
+    #ff4500 50%,
+    #ff4500 100%
+  );
+  background-image: linear-gradient(
+    to right,
+    #ff4500 0%,
+    #ff4500 47%,
+    #ff4500 50%,
+    #ff4500 100%
+  );
+}
+#bar-chart .stat-2 {
+  background-image: -webkit-linear-gradient(
+    left,
+    #b8f123 0%,
+    #b8f123 47%,
+    #b8f123 50%,
+    #b8f123 100%
+  );
+  background-image: linear-gradient(
+    to right,
+    #b8f123 0%,
+    #b8f123 47%,
+    #b8f123 50%,
+    #b8f123 100%
+  );
+}
+#bar-chart .stat-3 {
+  background-image: -webkit-linear-gradient(
+    left,
+    #00c5ff 0%,
+    #00c5ff 47%,
+    #00c5ff 50%,
+    #00c5ff 100%
+  );
+  background-image: linear-gradient(
+    to right,
+    #00c5ff 0%,
+    #00c5ff 47%,
+    #00c5ff 50%,
+    #00c5ff 100%
+  );
+}
+#bar-chart .stat-4 {
+  background-image: -webkit-linear-gradient(
+    left,
+    #bcbcbc 0%,
+    #bcbcbc 47%,
+    #bcbcbc 50%,
+    #bcbcbc 100%
+  );
+  background-image: linear-gradient(
+    to right,
+    #bcbcbc 0%,
+    #bcbcbc 47%,
+    #bcbcbc 50%,
+    #bcbcbc 100%
+  );
+}
