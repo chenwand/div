@@ -34,12 +34,17 @@ class Chart1 extends Component {
     legendPosition: 'right'
   };
 
-  componentWillMount() {
+  componentDidMount() {
     Chart.pluginService.register({
       afterDraw: function(chart, easing) {
         // Plugin code.
       }
     });
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.chartData !== this.props.chartData) {
+      this.setState({ chartData: this.props.chartData });
+    }
   }
   render() {
     return (

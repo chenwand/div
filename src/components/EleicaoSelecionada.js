@@ -88,82 +88,64 @@ class EleicaoSelecionada extends Component {
     return rows;
   }
   loadChartDatasets() {
-    this.setState({
-      chartSecoes: {
-        ...this.state.chartSecoes,
+    const chartSecoesUpdate = {
+      ...this.state.chartSecoes,
+      datasets: [
+        {
+          ...this.state.chartSecoes.datasets[0],
+          data: [this.props.eleicao.s.snt, this.props.eleicao.s.st]
+        }
+      ],
+      labels: ["não totalizadas", "totalizadas"]
+    };
+  
+    const chartVotosUpdate = this.props.eleicao.carper === "6" || 
+      this.props.eleicao.carper === "7" || 
+      this.props.eleicao.carper === "8" || 
+      this.props.eleicao.carper === "13" 
+      ? {
+        ...this.state.chartVotos,
         datasets: [
           {
-            ...this.state.chartSecoes.datasets[0],
-            data: [this.props.eleicao.s.snt, this.props.eleicao.s.st]
+            ...this.state.chartVotos.datasets[0],
+            data: [
+              this.props.eleicao.v.vnom, 
+              this.props.eleicao.v.vl, 
+              this.props.eleicao.v.van, 
+              this.props.eleicao.v.vansj, 
+              this.props.eleicao.v.vb, 
+              this.props.eleicao.v.vn 
+            ]
           }
-        ]
-      }
-    });
-    this.setState({
-      chartSecoes: {
-        ...this.state.chartSecoes,
-        labels: ["não totalizadas", "totalizadas"]
-      }
-    });
-    if (
-      this.props.eleicao.carper === "6" ||
-      this.props.eleicao.carper === "7" ||
-      this.props.eleicao.carper === "8" ||
-      this.props.eleicao.carper === "13"
-    ) {
-      this.setState({
-        chartVotos: {
-          ...this.state.chartVotos,
-          datasets: [
-            {
-              ...this.state.chartVotos.datasets[0],
-              data: [ 
-                this.props.eleicao.v.vnom, 
-                this.props.eleicao.v.vl, 
-                this.props.eleicao.v.van, 
-                this.props.eleicao.v.vansj, 
-                this.props.eleicao.v.vb, 
-                this.props.eleicao.v.vn 
-              ]
-            }
-          ]
-        }
-      });
-      this.setState({
-        chartVotos: {
-          ...this.state.chartVotos,
-          labels: ["nominais", "legenda", "anulados", "anulados sub judice", "brancos", "nulos"]
-        }
-      });
-    } else {
-      this.setState({
-        chartVotos: {
-          ...this.state.chartVotos,
-          datasets: [
-            {
-              ...this.state.chartVotos.datasets[0],
-              data: [ 
-                this.props.eleicao.v.vb, 
-                this.props.eleicao.v.vn, 
-                this.props.eleicao.v.van, 
-                this.props.eleicao.v.vansj, 
-                this.props.eleicao.v.vv 
-              ]
-            }
-          ],
-          labels: ["brancos", "nulos", "anulados", "anulados sub judice", "válidos"]
-        }
-      });
-    }
-    this.setState({
-      chartVotos: {
+        ],
+        labels: ["nominais", "legenda", "anulados", "anulados sub judice", "brancos", "nulos"]
+      } 
+      : {
         ...this.state.chartVotos,
+        datasets: [
+          {
+            ...this.state.chartVotos.datasets[0],
+            data: [
+              this.props.eleicao.v.vb, 
+              this.props.eleicao.v.vn, 
+              this.props.eleicao.v.van, 
+              this.props.eleicao.v.vansj, 
+              this.props.eleicao.v.vv
+            ]
+          }
+        ],
+        labels: ["brancos", "nulos", "anulados", "anulados sub judice", "válidos"],
         title: "Votos"
-      }
+      };
+    this.setState({ 
+      chartSecoes: chartSecoesUpdate, 
+      chartVotos: chartVotosUpdate 
     });
   }
-  render() {
+  componentDidMount() {
     this.loadChartDatasets();
+  }
+  render() {
     if (this.props.eleicao === undefined) {
       return null;
     }
