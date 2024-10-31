@@ -1314,7 +1314,7 @@ class App extends Component {
             </div>
           </div>
           <nav className="navbar navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="#1">
               <img
                 src={logo}
                 width="30"

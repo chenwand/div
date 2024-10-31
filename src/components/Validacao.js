@@ -21,7 +21,7 @@ class Validacao extends Component {
           key={i + 'b'}
         >
           <div className="col-9">
-            <a href={this.props.arquivos[i].caminhoArquivo} target="_blank">
+            <a href={this.props.arquivos[i].caminhoArquivo} target="_blank" rel="noopener noreferrer">
               {this.props.arquivos[i].caminhoArquivo}
             </a>
           </div>

@@ -88,54 +88,79 @@ class EleicaoSelecionada extends Component {
     return rows;
   }
   loadChartDatasets() {
-    this.state.chartSecoes.datasets[0].data = [
-      this.props.eleicao.s.snt,
-      this.props.eleicao.s.st,
-    ];
-    this.state.chartSecoes.labels = ["não totalizadas", "totalizadas"];
+    this.setState({
+      chartSecoes: {
+        ...this.state.chartSecoes,
+        datasets: [
+          {
+            ...this.state.chartSecoes.datasets[0],
+            data: [this.props.eleicao.s.snt, this.props.eleicao.s.st]
+          }
+        ]
+      }
+    });
+    this.setState({
+      chartSecoes: {
+        ...this.state.chartSecoes,
+        labels: ["não totalizadas", "totalizadas"]
+      }
+    });
     if (
       this.props.eleicao.carper === "6" ||
       this.props.eleicao.carper === "7" ||
       this.props.eleicao.carper === "8" ||
       this.props.eleicao.carper === "13"
     ) {
-      this.state.chartVotos.datasets[0].data = [
-        this.props.eleicao.v.vnom,
-        this.props.eleicao.v.vl,
-        this.props.eleicao.v.van,
-        this.props.eleicao.v.vansj,
-        this.props.eleicao.v.vb,
-        this.props.eleicao.v.vn,
-      ];
-      this.state.chartVotos.labels = [
-        "nominais",
-        "legenda",
-        "anulados",
-        "anulados sub judice",
-        "brancos",
-        "nulos",
-      ];
+      this.setState({
+        chartVotos: {
+          ...this.state.chartVotos,
+          datasets: [
+            {
+              ...this.state.chartVotos.datasets[0],
+              data: [ 
+                this.props.eleicao.v.vnom, 
+                this.props.eleicao.v.vl, 
+                this.props.eleicao.v.van, 
+                this.props.eleicao.v.vansj, 
+                this.props.eleicao.v.vb, 
+                this.props.eleicao.v.vn 
+              ]
+            }
+          ]
+        }
+      });
+      this.setState({
+        chartVotos: {
+          ...this.state.chartVotos,
+          labels: ["nominais", "legenda", "anulados", "anulados sub judice", "brancos", "nulos"]
+        }
+      });
     } else {
-      this.state.chartVotos.datasets[0].data = [
-        this.props.eleicao.v.vb,
-        this.props.eleicao.v.vn,
-        this.props.eleicao.v.van,
-        this.props.eleicao.v.vansj,
-        this.props.eleicao.v.vv,
-      ];
-      this.state.chartVotos.labels = [
-        "brancos",
-        "nulos",
-        "anulados",
-        "anulados sub judice",
-        "válidos",
-      ];
+      this.setState({
+        chartVotos: {
+          ...this.state.chartVotos,
+          datasets: [
+            {
+              ...this.state.chartVotos.datasets[0],
+              data: [ 
+                this.props.eleicao.v.vb, 
+                this.props.eleicao.v.vn, 
+                this.props.eleicao.v.van, 
+                this.props.eleicao.v.vansj, 
+                this.props.eleicao.v.vv 
+              ]
+            }
+          ],
+          labels: ["brancos", "nulos", "anulados", "anulados sub judice", "válidos"]
+        }
+      });
     }
-    this.state.chartVotos.title = "Votos";
-
-    //this.state.chartEleitorado.datasets[0].data = [this.state.vt.ea, this.state.vt.ena];
-    //this.state.chartEleitorado.datasets[1].data = [this.state.vt.c, this.state.vt.a];
-    //this.state.chartEleitorado.labels = ['Eleitorado apurado' ,'Eleitorado não apurado','Comparecimento','Abstenção'];
+    this.setState({
+      chartVotos: {
+        ...this.state.chartVotos,
+        title: "Votos"
+      }
+    });
   }
   render() {
     this.loadChartDatasets();
