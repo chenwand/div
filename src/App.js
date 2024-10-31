@@ -27,16 +27,6 @@ class App extends Component {
       configuracaoEleicao: {},
       eleicoesDisponiveis: [],
       eleicoesCarregadas: [],
-      eleicoes: {
-        "1": [],
-        "3": [],
-        "5": [],
-        "6": [],
-        "7": [],
-        "8": [],
-        "11": [],
-        "13": [],
-      },
       url: "https://resultados.tse.jus.br/",
       ambiente: "oficial",
       showFlags: true,
@@ -64,42 +54,19 @@ class App extends Component {
   handleClick = () => this.atualizar();
 
   handleClickCargo(e) {
-    if (
-      this.state.eleicaoSelecionada === "" ||
-      this.state.abrangenciaSelecionada === "aa"
-    ) {
-      return;
-    }
     console.log(e.currentTarget.id);
 
     var idcargo = e.currentTarget.id;
-    //this.state.isLoadingCargo[idcargo] = true;
     var isLoadingCargo = this.state.isLoadingCargo;
     isLoadingCargo[idcargo] = true;
     this.setState({ isLoadingCargo: isLoadingCargo });
-    // this.carregaArquivosResultadoPorCargo(idcargo);
+    //this.carregaArquivosResultadoPorCargo(idcargo);
   }
 
   atualizar() {
     this.setState({
-      eleicoes: {
-        "1": [],
-        "3": [],
-        "5": [],
-        "6": [],
-        "7": [],
-        "8": [],
-        "11": [],
-        "13": [],
-      },
       erroValidacaoJSON: [],
     });
-    if (
-      this.state.eleicaoSelecionada === "" ||
-      this.state.abrangenciaSelecionada === "aa"
-    ) {
-      return;
-    }
     if (
       this.state.eleicaoSelecionada.tp === "3" ||
       this.state.eleicaoSelecionada.tp === "4" ||
@@ -135,18 +102,6 @@ class App extends Component {
         eleicaoSelecionada: eleicao,
         eleicoesCarregadas: [],
         municipioSelecionado: undefined,
-        eleicoes: {
-          "1": [],
-          "3": [],
-          "5": [],
-          "6": [],
-          "7": [],
-          "8": [],
-          "11": [],
-          "13": [],
-          "55": [],
-          "57": [],
-        },
         erroValidacaoJSON: [],
       });
       this.carregaArquivoAcompanhamentoBR(eleicao);
@@ -648,49 +603,6 @@ class App extends Component {
       }
     }
   }
-  carregaArquivosResultadoPorCargo(idcargo) {
-    var ambiente = this.state.ambiente;
-    var abrangencia = this.state.abrangenciaSelecionada;
-    var eleicao = this.state.eleicaoSelecionada;
-    var ano = eleicao.ano;
-    var arquivo = "";
-    var photoUrl =
-      this.state.url +
-      ano +
-      "/divulgacao/" +
-      ambiente +
-      "/" +
-      eleicao.cd +
-      "/fotos/";
-    this.setState({ photoUrl: photoUrl });
-    for (var j = 0; j < eleicao.cdabr.length; j++) {
-      abrangencia = eleicao.cdabr[j].toLowerCase();
-      var cargo =
-        abrangencia === "df" && eleicao.cargos[idcargo].cd === "7"
-          ? 8
-          : parseInt(eleicao.cargos[idcargo].cd, 10);
-      cargo = "c" + (cargo + 10000).toString().slice(-4);
-
-      arquivo =
-        this.state.url +
-        ano +
-        "/divulgacao/" +
-        ambiente +
-        "/" +
-        eleicao.cd +
-        "/dadosdivweb/" +
-        abrangencia +
-        "/" +
-        abrangencia +
-        "-" +
-        cargo +
-        "-e" +
-        (parseInt(eleicao.cd, 10) + 1000000).toString().slice(-6) +
-        "-w.js";
-      console.log(arquivo);
-      this.loadEleicoesCargoJSON(arquivo);
-    }
-  }
   carregaArquivosResultadoPorEleicao(abrangencia, eleicao) {
     var ambiente = this.state.ambiente;
     var ano = this.state.configuracaoEleicao.c;
@@ -906,8 +818,7 @@ class App extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     this.carregarArquivosConfiguracaoEleicao(this.state.ambiente);
-  }
-  componentWillUnmount() {
+
     clearInterval(this.intervalId);
   }
 
@@ -1122,9 +1033,9 @@ class App extends Component {
         id = "nav-" + i;
         aria = "nav-tab-" + i;
         classTabPanel = i === 0 ? "tab-pane fade show active" : "tab-pane fade";
-        eleicoesFlag = this.state.eleicoes[
+       /* eleicoesFlag = this.state.eleicoes[
           this.state.eleicoesCarregadas[i].carper
-        ];
+        ];*/
         rows.push(
           <div
             className={classTabPanel}
