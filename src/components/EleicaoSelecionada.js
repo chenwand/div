@@ -213,22 +213,22 @@ class EleicaoSelecionada extends Component {
       this.props.eleicao.esae === "s"
         ? "badge badge-danger text-center"
         : "text-center badge badge-" + cssTotFinal;
-    const classMD =
+    /*const classMD =
       this.props.eleicao.md === "e" || this.props.eleicao.md === "s"
         ? " badge badge-info text-center"
-        : " text-center badge badge-" + cssTotFinal;
+        : " text-center badge badge-" + cssTotFinal;*/
     const comparecimento = this.props.eleicao.e.c;
-    const abstencao = this.props.eleicao.e.a;
+  //  const abstencao = this.props.eleicao.e.a;
     const comparecimentoPercentual = (
       (isNaN(comparecimento / eleitoradoApurado)
         ? 0
         : comparecimento / eleitoradoApurado) * 100
     ).toFixed(2);
-    const abstencaoPercentual = (
+   /* const abstencaoPercentual = (
       (isNaN(abstencao / eleitoradoApurado)
         ? 0
         : abstencao / eleitoradoApurado) * 100
-    ).toFixed(2);
+    ).toFixed(2);*/
     const chartdataComparecimento = [
       {
         total: comparecimento,
@@ -236,9 +236,9 @@ class EleicaoSelecionada extends Component {
         showtext: true,
       },
     ];
-    const chartdataAbstencao = [
+    /*const chartdataAbstencao = [
       { total: abstencao, value: abstencaoPercentual, showtext: true },
-    ];
+    ];*/
     const vagas =
       this.props.eleicao.carg && this.props.eleicao.carg.length > 0
         ? this.props.eleicao.carg[0].nv
